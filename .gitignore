@@ -71,8 +71,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-/Logs/
-ShootEmUp (Dirty).sln
+/Library/PackageCache/
 
 # IDE staff
 .vscode
