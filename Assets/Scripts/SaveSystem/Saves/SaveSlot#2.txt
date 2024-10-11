@@ -1,0 +1,1 @@
+{"System.Collections.Generic.List`1[SaveSystem.SaveLoader.SaveLoaders.ResourceSavable]":"[{\"ID\":\"Tree1\",\"Amount\":0},{\"ID\":\"Stone1\",\"Amount\":0},{\"ID\":\"Tree2\",\"Amount\":0},{\"ID\":\"Stone3\",\"Amount\":0},{\"ID\":\"Tree3\",\"Amount\":0},{\"ID\":\"Stone2\",\"Amount\":0}]","System.Collections.Generic.List`1[SaveSystem.SaveLoader.SaveLoaders.UnitSavable]":"[]"}

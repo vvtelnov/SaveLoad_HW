@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace GameEngine
 {
     //Нельзя менять!
-    [Serializable]
     public sealed class ResourceService
     {
         [ShowInInspector, ReadOnly]

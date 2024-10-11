@@ -890,11 +890,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 
+  cloudProjectId: 3de19e94-65b9-4a58-9a7a-c567c14b04df
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: SaveLoad_HW
+  organizationId: vvtelnov
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

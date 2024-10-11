@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Zenject;
 using Object = UnityEngine.Object;
+using Random = System.Random;
 
 namespace GameEngine
 {
@@ -10,7 +13,6 @@ namespace GameEngine
     [Serializable]
     public sealed class UnitManager
     {
-        [SerializeField]
         private Transform container;
 
         [ShowInInspector, ReadOnly]
@@ -20,6 +22,7 @@ namespace GameEngine
         {
         }
 
+        [Inject]
         public UnitManager(Transform container)
         {
             this.container = container;
