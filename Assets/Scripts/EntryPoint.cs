@@ -31,7 +31,7 @@ public sealed class EntryPoint : MonoBehaviour
         _saveSystemManager = saveSystemManager;
 
         SetupSceneObjects(resources, units);
-        LoadDefaultSave();
+        // LoadDefaultSave();
     }
 
     private void SetupSceneObjects(Resource[] resources, Unit[] units)

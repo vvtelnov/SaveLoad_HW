@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Bson;
-using Newtonsoft.Json.Converters;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace SaveSystem.GameRepository
 {
@@ -14,14 +11,18 @@ namespace SaveSystem.GameRepository
     {
         private Dictionary<string, string> _dataRepository;
         
-        private readonly string SAVE_FILE_EXTENSION = ".txt";
-        private readonly string SAVE_FILE_NAME = "SaveSlot#"; 
-        private readonly string DEFAULT_SAVE_FILE_NAME = "DefaultSaveSlot"; 
+        private const string SAVE_FILE_EXTENSION = ".txt";
+        private const string SAVE_FILE_NAME = "SaveSlot#"; 
+        private const string DEFAULT_SAVE_FILE_NAME = "DefaultSaveSlot"; 
         private readonly string _saveSlotsDirPath; 
-        private readonly string _defaultSaveSlotsPath; 
+        private readonly string _defaultSaveSlotsPath;
+
+        private IBinaryConverter _binaryConverter;
         
-        public GameRepository()
+        public GameRepository(IBinaryConverter binaryConverter)
         {
+            _binaryConverter = binaryConverter;
+            
             _dataRepository = new Dictionary<string, string>();
             _saveSlotsDirPath = Path.Combine(
                 Environment.CurrentDirectory, "Assets", "Scripts", "SaveSystem", "Saves");
@@ -37,7 +38,7 @@ namespace SaveSystem.GameRepository
             if (_dataRepository.TryGetValue(dataTypeStr, out var value))
             {
                 data = JsonConvert.DeserializeObject<T>(value);
-
+                
                 return true;
             }
             
@@ -81,9 +82,11 @@ namespace SaveSystem.GameRepository
             
             using (StreamWriter saveFileSW = new StreamWriter(filePath, false))
             {
-                saveFileSW.Write(
-                    JsonConvert.SerializeObject(_dataRepository)
-                    );
+                string serializedData = JsonConvert.SerializeObject(_dataRepository);
+                string binaryData = _binaryConverter.StringToBinary(serializedData);
+
+                saveFileSW.Write(binaryData);
+
             }
         }
 
@@ -116,13 +119,14 @@ namespace SaveSystem.GameRepository
 
         private void ReadSaveSlot(string saveSlotPath)
         {
-            string savedData;
+            string binarySavedData;
 
             using (StreamReader savedFileSR = new StreamReader(saveSlotPath))
             {
-                savedData = savedFileSR.ReadToEnd();
+                binarySavedData = savedFileSR.ReadToEnd();
             }
             
+            string savedData = _binaryConverter.BinaryToString(binarySavedData);
             _dataRepository = JsonConvert.DeserializeObject<Dictionary<string, string>>(savedData);
         }
         

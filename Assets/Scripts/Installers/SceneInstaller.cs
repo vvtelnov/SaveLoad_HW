@@ -17,6 +17,7 @@ namespace Installers
             Container.Bind<EntryPoint>().FromInstance(FindObjectOfType<EntryPoint>()).AsSingle();
             Container.Bind<SaveSystemManager>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<GameRepository>().AsSingle();
+            Container.BindInterfacesAndSelfTo<BinaryConverter>().AsSingle();
             Container.BindInterfacesAndSelfTo<SaveLoaderManager>().AsSingle();
             Container.Bind<ResourceService>().AsSingle();
             Container.Bind<UnitManager>().AsSingle();
