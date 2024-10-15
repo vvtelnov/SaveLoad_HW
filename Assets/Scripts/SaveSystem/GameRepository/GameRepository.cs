@@ -14,9 +14,9 @@ namespace SaveSystem.GameRepository
     {
         private Dictionary<string, string> _dataRepository;
         
-        private readonly string SAVE_FILE_EXTENSION = ".txt";
-        private readonly string SAVE_FILE_NAME = "SaveSlot#"; 
-        private readonly string DEFAULT_SAVE_FILE_NAME = "DefaultSaveSlot"; 
+        private const string SAVE_FILE_EXTENSION = ".txt";
+        private const string SAVE_FILE_NAME = "SaveSlot#"; 
+        private const string DEFAULT_SAVE_FILE_NAME = "DefaultSaveSlot"; 
         private readonly string _saveSlotsDirPath; 
         private readonly string _defaultSaveSlotsPath; 
         
